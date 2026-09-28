@@ -15,7 +15,7 @@ previous major version, follow the [MongoDB migration guide](/integrations/sourc
 
 Here is an outline of the minimum required steps to configure a new MongoDB V2 source connector:
 
-1. Create or discover the configuration of a [MongoDB replica set](https://www.mongodb.com/docs/manual/replication/), either hosted in [MongoDB Atlas](https://www.mongodb.com/atlas/database) or self-hosted.
+1. Create or discover the configuration of a [MongoDB replica set](https://www.mongodb.com/docs/manual/replication/) or [sharded cluster](https://www.mongodb.com/docs/manual/sharding/), either hosted in [MongoDB Atlas](https://www.mongodb.com/atlas/database) or self-hosted.
 2. Create a MongoDB user that can read the databases you want to replicate.
 3. Find the connection string of your cluster.
 4. Create a new MongoDB source in the Airbyte UI.
@@ -166,7 +166,7 @@ In addition, MongoDB source now allows for syncing in a full refresh mode.
 
 ### CDC
 
-Airbyte utilizes [the change streams feature](https://www.mongodb.com/docs/manual/changeStreams/) of a [MongoDB replica set](https://www.mongodb.com/docs/manual/replication/) to incrementally capture inserts, updates and deletes using a replication plugin. To learn more how Airbyte implements CDC, refer to [Change Data Capture (CDC)](https://docs.airbyte.com/understanding-airbyte/cdc/).
+Airbyte utilizes [the change streams feature](https://www.mongodb.com/docs/manual/changeStreams/) of a [MongoDB replica set](https://www.mongodb.com/docs/manual/replication/) or [sharded cluster](https://www.mongodb.com/docs/manual/sharding/) to incrementally capture inserts, updates and deletes using a replication plugin. To learn more how Airbyte implements CDC, refer to [Change Data Capture (CDC)](https://docs.airbyte.com/understanding-airbyte/cdc/).
 
 ### Full Refresh
 
@@ -256,7 +256,7 @@ For more information regarding configuration parameters, please see [MongoDb Doc
 
 | Version | Date       | Pull Request                                             | Subject                                                                                                  |
 |:--------|:-----------|:---------------------------------------------------------|:---------------------------------------------------------------------------------------------------------|
-| 2.1.0 | 2026-09-02 | [83705](https://github.com/airbytehq/airbyte/pull/83705) | Support sharded clusters and object-type `_id` fields; detect `_id` types with index seeks instead of a full collection scan; bump Debezium to 3.6.2 and base image to 2.0.4 |
+| 2.1.0   | 2026-09-28 | [83705](https://github.com/airbytehq/airbyte/pull/83705) | Support sharded clusters and object-type `_id` fields; detect `_id` types with index seeks instead of a full collection scan; bump Debezium to 3.6.2 and base image to 2.0.4 |
 | 2.0.7 | 2026-01-21 | [71049](https://github.com/airbytehq/airbyte/pull/71049) | Use debezium's own token validation logic to ensure that the saved resume token is present on the server (h/t @ed-kyu) |
 | 2.0.6   | 2026-01-21 | [70980](https://github.com/airbytehq/airbyte/pull/70980) | Convert non-array MongoDB values into arrays when the schema expects an array to prevent nulls.        |
 | 2.0.5   | 2026-01-14 | [71255](https://github.com/airbytehq/airbyte/pull/71255) | fix(source-mongodb-v2): Add helpful error message for BSONObjectTooLarge errors during CDC syncs |
